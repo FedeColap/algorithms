@@ -1,14 +1,23 @@
-//POWER CALCULATOR
-let base = 2
-let elev= 3
-function powerCalculator (base, elev) {
-    for(i=0; i<=elev; i++) {
-        base *= base
+//COUNT SHEEPS
+function countSheeps(pecore) {
+    for(i= pecore; i>0; i--) {
+        console.log(`${pecore}: another sheep jumps over the fence`)
+        pecore -= 1
     }
-};
-powerCalculator()
+    return `all sheeps jumped`
+}
+countSheeps(5) 
 
-//REVERSE STRING
+//POWER CALCULATOR
+function powerCalculator (base,elev){
+    var p=1;
+    for (var i=0;i<elev;i++)
+    { p*=base;}
+    return p;
+}
+powerCalculator(2,3)
+
+//REVERSE STRING --- no, this is a method
 function reverseStr(str) {
     return str.split("").reverse().join("");
 }
@@ -32,7 +41,24 @@ function reverseStr(str) {
     return charArr.join('');
 }
 console.log(reverseStr("troll"));  // "llort"
-
+//REVERSE STRING --------------------- does not work, check with Jamie
+function reverseStr(string) {
+    for(i=0; i<=string.length; i++){
+        let Newstring= string.slice(-1)
+        console.log(Newstring)
+        let string= string.substr(-1)
+    }
+    return string
+}
+//REVERSE STRING -- WORKS 
+function reverseString(str) {
+    let result = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        result += str[i];
+    }
+    return result;
+}
+reverseString('arno')
 //FACTORIAL
 function factorial(n) {
     var result = 1;
@@ -41,6 +67,18 @@ function factorial(n) {
     }
     return result;
 }
+//FACTORIAL AGAIN
+function factorial(input) {
+    let result = input;
+
+    for (let i = input - 1; i > 0; i--) {
+        result = result * i;
+    }
+
+    return result;
+}
+
+factorial(4);
 //FIBONACCI
 function fibonacci(num){
     var a = 1, b = 0, temp;
