@@ -145,6 +145,23 @@ function isWhat(n) {
 // determines if a number is an integer over 2 // FALSE! DETERMINES PRIME NUMBERS
 // O(1) constant time as it has to perform 3 operations on the number, no matter his value
 
+
+// 11. Tower of Hanoi
+function moveDisk(disk, from,to) {
+    console.log(`Move disk #${disk} from ${from} to ${to}`);
+};
+function Hanoi(disk, from, to , via ) {
+    if(disk === 0) {
+        return;    
+    }
+  Hanoi(disk-1, from, via, to);
+
+  moveDisk(disk, from,to);
+  
+  Hanoi(disk-1, via, to, from);
+}
+Hanoi(5, 'A', 'B', 'C')
+
 // 12. Iterative version
 // Solve the drills 1 - 7 from your previous checkpoint (Recursion) iteratively.
 
