@@ -171,13 +171,17 @@ let input = [1, 3, 9, 4]
 let output = [108, 36, 12, 27]
 
 function multiply(array) {
-    let store = []
-    let partial = 1
-    for(i=0; i<=array.length; i++) {
-        console.log(array[i])
-        partial *= array[i]
-        store.push(number)
+    let starting = array[0];
+    // iterate through once to find the total product of all numbers
+    for (let i = 1; i < array.length; i++) {
+        totalProduct = starting * array[i];
     }
-    console.log(store)
+    // iterate through once more to generate the results array
+    const result = [];
+    for (let i = 0; i < array.length; i++) {
+        result.push(totalProduct / array[i])
+    }
+    console.log(result);
+    return result;
 }
 multiply(input);
