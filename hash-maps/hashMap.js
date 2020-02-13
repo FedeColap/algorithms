@@ -113,16 +113,72 @@ function main() {
 main();
 
 //OUTPUT
-//HashMap {length: 9, _hashTable: Array(8), _capacity: 8, _deleted: 0}
+//HashMap {length: 9, _hashTable: Array(24), _capacity: 24, _deleted: 0}
 // length: 9
-// _hashTable: Array(8)
-// 0: {key: "Maiar", value: "Sauron", DELETED: false}
-// 1: {key: "RingBearer", value: "Gollum", DELETED: false}
-// 2: {key: "LadyOfLight", value: "Galadriel", DELETED: false}
-// 3: {key: "HalfElven", value: "Arwen", DELETED: false}
-// 4: {key: "Elf", value: "Legolas", DELETED: false}
-// 5: {key: "Hobbit", value: "Frodo", DELETED: false}
+// _hashTable: Array(24)
+// 2: {key: "HalfElven", value: "Arwen", DELETED: false}
+// 4: {key: "LadyOfLight", value: "Galadriel", DELETED: false}
 // 6: {key: "Wizard", value: "Gandolf", DELETED: false}
-// 7: {key: "Human", value: "Aragorn", DELETED: false}
-// undefined: {key: "Ent",value: "Treebeard", DELETED: false }
+// 7: {key: "RingBearer", value: "Gollum", DELETED: false}
+// 12: {key: "Elf", value: "Legolas", DELETED: false}
+// 13: {key: "Hobbit", value: "Frodo", DELETED: false}
+// 20: {key: "Ent", value: "Treebeard", DELETED: false}
+// 22: {key: "Human", value: "Aragorn", DELETED: false}
+// 23: {key: "Maiar", value: "Sauron", DELETED: false}
 
+//The Necromancer and Bilbo do not appear in HashMap. Although I was expecting an open address for duplicate keys, so... wwird.
+//Retrieve the value that is hashed in the key "Maiar" and Hobbit. ---- are Frodo and Sauron (no mention to duplicates)
+//capacity of has table after resizing is 24, given the initial capacity of 8 * the size_ratio 3.
+
+//2. WhatDoesThisDo
+// DO NOT run the following code before solving the problem.
+// What is the output of the following code? explain your answer.
+const WhatDoesThisDo = function(){
+    let str1 = 'Hello World.';
+    let str2 = 'Hello World.';
+    let map1 = new HashMap();
+    map1.set(str1,10);
+    map1.set(str2,20);
+    let map2 = new HashMap();
+    let str3 = str1;
+    let str4 = str2;
+    map2.set(str3,20);
+    map2.set(str4,10);
+
+    console.log(map1.get(str1));
+    console.log(map2.get(str3));
+}
+WhatDoesThisDo();
+//it creates 2 hash maps, initialize keys, and set them in slots with value. WRONG!
+//it initialize 2 "objects", but since they have the same key, the second overwrites the first, in both hash tables. 
+//So even if you call for the first object, it will retrieve the second insertion.
+
+
+//1) Show your hash map after the insertion of keys 10, 22, 31, 4, 15, 28, 17, 88, 59 into a hash map of length 11 
+//using open addressing and a hash function k mod m, where k is the key and m is the length.
+
+// 10 --> 10; 22 --> 0; 31 --> 9; 4 --> 4; 15 --> is 4, moved to 5; 28 --> 6; 17 --> is 6, moved to 7; 88 --> is 0, moved to 1; 59 --> is 4, moved to 8;
+
+//2) Show your hash map after the insertion of the keys 5, 28, 19, 15, 20, 33, 12, 17, 10 into the hash map with collisions resolved by separate chaining. 
+//Let the hash table have a length m = 9, and let the hash function be k mod m.
+
+//5 --> 5; 28 --> 1; 19 --> 1 chained ; 15 --> 6; 20 --> 2; 33 --> 6 chained;  12 --> 3; 17 --> 8; 10 --> 1 chained.
+
+//4. Remove duplicates
+//Implement a function to delete all duplicated characters in a string and keep only the first occurrence of each character. 
+//For example, if the input is string “google”, the result after deletion is “gole”. 
+
+function removeDup(string) {
+    let mappa = new HashMap();
+    //cleans the string
+    string = string.toLowerCase().replace(/[^a-zA-Z0-9]/g, ""); 
+    stringArray = string.split('');
+
+    for (let i = 0; i< stringArray.length; i++) {
+        mappa.set(stringArray[i], stringArray[i]) 
+    }
+    return mappa;
+
+}
+let parola = "google"
+removeDup(parola); //WRONG it returns lego and not gole (cuse index operation is not in order)
