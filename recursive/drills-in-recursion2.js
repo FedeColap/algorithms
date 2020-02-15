@@ -74,7 +74,7 @@ function powerCalculator(base, elev) {
   }
 powerCalculator(4, 4)
 
-                        //REVERSE STRING --- MINE --- NOT WORKING --- check with Jamie why
+                        //REVERSE STRING --- MINE --- NOT WORKING --- check why
                         function magic(string) {
                           console.log(string.length)
                           if (string.length <=1 ) {return string}
@@ -303,7 +303,7 @@ function magic(string) {
 
   
 }
-//ORGANIZATIONAL CHART --- to check with Jamie
+//ORGANIZATIONAL CHART --- to check ----------------------------------
 let organization= {
     Zuckerberg:[
         {Schroepfer: [{Bosworth: ['Steve', 'Kyle', 'Andra']},{Zhao: ['Richie', 'Sofia', 'Jen']}]},
@@ -320,7 +320,7 @@ function magic(org) {
 }
 magic(organization)
 
-//BINARY REPRESENTATION --- to check with Jamie
+//BINARY REPRESENTATION --- to check -------------------------------------
 function magic(number) {
   let result = []
 

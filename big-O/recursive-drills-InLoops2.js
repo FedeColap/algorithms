@@ -41,7 +41,7 @@ powerCalculator(2,3)
                 return charArr.join('');
             }
             console.log(reverseStr("troll"));  // "llort"
-            //REVERSE STRING --------------------- does not work, check with Jamie
+            //REVERSE STRING --------------------- does not work, check 
             function reverseStr(string) {
                 for(i=0; i<=string.length; i++){
                     let Newstring= string.slice(-1)
