@@ -30,8 +30,8 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { value } = this.state
-    const array = {rawSTORE}
-    this.indexOf(array, value);
+    // const array = {rawSTORE}
+    this.indexOf(rawSTORE, value);
     this.setState({
       showResult: true
     })
@@ -39,10 +39,10 @@ class App extends Component {
 
   indexOf(array, value) {
     console.log(array)
-    console.log(value)
+    console.log(typeof value)
     for (let i = 0; i < array.length; i++) {
       console.log(i)
-      if (array[i] === value) {
+      if (array[i] === Number(value)) {
         console.log(i)
           return this.setState({
             indexItem: i

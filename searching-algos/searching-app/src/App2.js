@@ -33,7 +33,7 @@ class App2 extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { value } = this.state
-    const { array } = array
+    // const { array } = array
     this.binarySearch(array, value);
     this.setState({
       showResult: true
