@@ -129,21 +129,31 @@ function simulateQueue() {
 simulateQueue();
 
 //9. Square dance pairing --- to check!
-function pair() {
-    const maleq = new Queue();
-    const femaleq = new Queue();
-    const dancer;
-    if (dancer.includes("M")) {
-        maleq.enqueue(dancer)
-    } else {
-        femaleq.enqueue(dancer)
+//https://repl.it/@FedeCola/queue-drill-6
+const maleq = new Queue();
+const femaleq = new Queue();
+const dancers = ["F Jane", "M Frank", "M John", "M Sherlock", "F Madonna", "M David", "M Christopher", "F Beyonce"];
+
+
+
+function pair(queue1, queue2, array) {
+    for(let i=0; i < array.length; i++) {
+        if (array[i].includes("M ")) {
+            queue1.enqueue(array[i])
+        } else {
+            queue2.enqueue(array[i])
+        }
     }
-    if(maleq.first !== null && femaleq.first !== null) {
-        maleq.dequeue();
-        femaleq.dequeue();
-        console.log(`paired ${maleq.dequeue()}  with ${femaleq.dequeue()}`)
+    
+    while(queue1.first !== null && queue2.first !== null) {
+        // queue1.dequeue(); DO NOT CALL THEM OR YOU DOUBLE UNQUEUE
+        // queue2.dequeue();
+        console.log(`paired ${queue1.dequeue()} with ${queue2.dequeue()}`)
     }
+    return console.log(queue1, queue2)
 
 }
+
+pair(maleq, femaleq, dancers);
 
 //Ophidian Bank --- TBD

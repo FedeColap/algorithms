@@ -129,50 +129,85 @@ firstcall([3, 5, 6, 8, 11, 12, 14, 15, 17, 18], 16);
 
 
 //5. Implement different tree traversals -------------------------------
+//https://repl.it/@FedeCola/searching-algos-5
 
 //in order traversal of search (Left, Root, Right)
-function dfs(values=[]) {
-    //explore left of bst
-    if (this.left) {
-        //keep going
-        values = this.left.dfs(values);
+function inOrder(tree, values = []) {
+    if (tree.left) {
+        values = inOrder(tree.left, values)
     }
-    //all left and all roots are pushed
-    values.push(this.value);
 
-    if (this.right) {
-        values = this.right.dfs(values);
+    values.push(tree.value)
+
+    if (tree.right) {
+        values = inOrder(tree.right, values)
     }
+
     return values;
 }
+inOrder(firstTree, array =[]);
 
 //pre order traversal of search (Root, Left, Right)
-function dfs(values=[]) {
-    //explore left of bst
-    if (this.left) {
-        // first push root, then go left
-        values.push(this.value);
-        //keep going
-        values = this.left.dfs(values);
+function preOrder(tree, values = []) {
+  values.push(tree.value)
+    if (tree.left) {
+        values = preOrder(tree.left, values)
     }
-    if (this.right) {
-        values = this.right.dfs(values);
+    if (tree.right) {
+        values = preOrder(tree.right, values)
     }
+
     return values;
 }
+preOrder(firstTree, array =[]);
 
 //post order traversal of search (Left, Right, Root)
-function dfs(values=[]) {
-    //explore left of bst
-    if (this.left) {
-        //keep going
-        values = this.left.dfs(values);
+function postOrder(tree, values = []) {
+  
+    if (tree.left) {
+        values = postOrder(tree.left, values)
     }
-
-    if (this.right) {
-        values = this.right.dfs(values);
+    if (tree.right) {
+        values = postOrder(tree.right, values)
     }
-
-    values.push(this.value);
+    values.push(tree.value)
     return values;
 }
+postOrder(firstTree, array =[]);
+
+//6. Find the next commander official
+//https://repl.it/@FedeCola/searching-algos-6
+
+function main(bst) {
+    bst.insert(5, "Captain Picard");
+    bst.insert(3, "Commander Riker");
+    bst.insert(2, "Lt. Cmdr. Worf");
+    bst.insert(1, "Lieutenant security-officer");
+    bst.insert(4, "Lt. Cmdr. LaForge");
+    bst.insert(6, "Commander Data");
+    bst.insert(8, "Lt. Cmdr. Crusher");
+    bst.insert(9, "Lieutenant Selar");
+    return bst;
+}
+
+main(army);
+
+function bfs(tree, values = []) {
+    const queue = new Queue();
+    queue.enqueue(tree);
+    while (queue.first) {
+        const node = queue.dequeue();
+        values.push(node.value);
+
+        if (node.left) {
+            queue.enqueue(node.left);
+        }
+
+        if (node.right) {
+            queue.enqueue(node.right);
+        }
+    }
+    return values;
+}
+
+bfs(army, peopleToDie =[]);
