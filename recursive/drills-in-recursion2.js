@@ -46,14 +46,14 @@ const countSheep = function(input) {
 let input = 3;
 console.log(countSheep(input))
                             
-                        //POWER CALCULATOR --- WHY DOES IT GIVE NAN??-----------------------------------
+                        //POWER CALCULATOR --- WHY DOES IT GIVE NAN??----------------------------------- i have put =0 2 times
                         function powerCalculator(base, exponent) {
                             if (exponent <= 0) {
                             return 'exponent should be >= 0'
 
                             } 
-                            else if (exponent = 0) {
-                                return 1;
+                            else if (exponent = 0) { //wrong here
+                                return 1; // return 1 will make the whole functione return 1, incorrect
                             }
                             else {
                                 return base * powerCalculator(base, exponent-1)
@@ -75,10 +75,11 @@ function powerCalculator(base, elev) {
 powerCalculator(4, 4)
 
                         //REVERSE STRING --- MINE --- NOT WORKING --- check why
+                        //corrected https://repl.it/@FedeCola/recursive
                         function magic(string) {
                           console.log(string.length)
                           if (string.length <=1 ) {return string}
-                          return console.log(string.slice(-1) + magic(string.length -1))
+                          return console.log(string.slice(-1) + magic(string.length -1)) //string.length-1 gives a number, not the string - 1
                         }
                         magic("casa")
                           
@@ -296,13 +297,28 @@ function getMazePath2(maze) {
     }
 }
 console.log(getMazePath2(maze));
-//ANAGRAMS
-function magic(string) {
-  if(string.length === 1) 
-    return string;
 
-  
+//ANAGRAMS -----------------------------------------------------
+function magic(string) {
+  if(string.length < 2) { //only 1 letter
+    return string
+  }
+  let store = []
+  for(let i=0; i< string.length; i++) {
+    let letter = string[i];
+
+    // Cause we don't want any duplicates:
+    if (string.indexOf(letter) !== i) { //letter already used
+      continue; //skip this time
+    }
+    let remainingString = string.slice(0, i) + string.slice(i + 1, string.length);
+    for (let subPermuts of magic(remainingString)) {
+      store.push(letter + subPermuts)
+    }
+  }
+  return store;  
 }
+magic("east")
 //ORGANIZATIONAL CHART --- to check ----------------------------------
 let organization= {
     Zuckerberg:[
@@ -311,12 +327,12 @@ let organization= {
         {Sandberg: [{Goler: ['Eddie', 'Julie', 'Annie']},{Hernandez: ['Rowi', 'Inga', 'Morgan']}]}
     ]}
 function magic(org) {
-    if(org.children === 0) {
+    if(org = []) { // this doesn't mean anything
       console.log(org)
         return;
     }
     console.log(org)
-    magic(' ' + org.children)
+    magic(' ' + org.children) // this doesn't mean anything
 }
 magic(organization)
 

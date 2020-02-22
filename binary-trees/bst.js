@@ -228,6 +228,7 @@ function third(element) {
 //8. Balanced BST
 //balanced tree is when heigth of left side and heigth of right side have a difference of ABSOLUTE  1
 //https://www.youtube.com/watch?v=LU4fGD-fgJQ
+//https://repl.it/@FedeCola/binarytrees
 
 
 //9. Are they the same BSTs?
@@ -242,7 +243,7 @@ function third(element) {
 function checkSame(array1, array2) {
     // Compare arrays, if false don't bother go further
     if (array1.length !== array2.length) {
-        return false
+        return false;
     }
     let array1s = array1.sort(function(a,b) {
         return a - b;

@@ -10,6 +10,7 @@ function main(){
     console.log(arr);
 }
 // 2. Explore the push() method--------------------------------------------------
+//https://repl.it/@FedeCola/arrayandmemory
 
 // Using the Array class you just created above, add an item to the array.
 function maintahu(){
@@ -21,7 +22,7 @@ function maintahu(){
 }
 maintahu();
 // length= 1 as one element has been pushed in the previously empty array  
-// capacity= 6 because it was 0 when inizialized, and then resized to "this._resize((1 + 1) * 3)"=6 after the push
+// capacity= 6 because it was 0 when inizialized, and then resized to "this._resize(( 0 + 1) * 3)"=3 after the push
 // memory address of the Array is 0, as the first and only item has 4 bit (1 cell)
 
 //Add the following in the main function and then print the array:--------
@@ -40,7 +41,7 @@ function mainmore(){
 }
 mainmore();
 // length= 6, number of elements pushed in the empty array
-// capacity= 21 because after 1st push and resize capacity became 6 and after last push "this._resize((6 + 1) * 3)"= 21
+// capacity= 12 because after 1st push and resize capacity became 3 and after last push "this._resize((3 + 1) * 3)"= 12
 // memory= 6-11, because: 1st push "creates" the previously empty array(no memory), with capacity 6 (slots 0-5),
     //second push creates capacity of 21, clears previous 6 slots and allocate in new slots (6-11)
 
@@ -147,20 +148,23 @@ filter(example);
     return result;
 }
 
-//9. Remove characters ---- NOT WORKING, WHY GIVES NaN? --------------------------------------
+//9. Remove characters ---- NOT WORKING, WHY GIVES NaN? ---------PAY ATTENTION TO += NOT =+
 let input = "Battle of the Vowels: Hawaii vs. Grozny";
 let deleteletters = "aeiou"
 function deletechars(string) {
-    let result = ""
-    for(i=0; i<= string.length; i++) {
-        console.log(string[i])
-        console.log(typeof(string[i]))
-        if (string[i] !== "a" || "e" || "i" || "o" || "u") {
-            console.log("accettabile")
-            result=+ string[i]
-        } else{console.log("vowel")}
-        console.log(result)
+    let result = "";
+
+    for(let i = 0; i < string.length; i++) {
+      if (string[i] !== "a" && 
+        string[i] !== "e" && 
+        string[i] !== "i" && 
+        string[i] !== "o" && 
+        string[i] !== "u") {
+        result += string[i]
+      }
     }
+
+    return result;
 }
 deletechars(input);
 
